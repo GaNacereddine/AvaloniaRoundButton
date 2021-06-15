@@ -8,7 +8,7 @@
         Icon="/Assets/avalonia-logo.ico"
         Title="RoundButton"
 		xmlns:c="clr-namespace:RoundButton.Controls;assembly=RoundButton"
-		xmlns:uc="clr-namespace:RoundButton.ViewModels;assembly=RoundButton">
+		xmlns:uc="clr-namespace:RoundButton.Views;assembly=RoundButton">
 
     <Design.DataContext>
         <vm:MainWindowViewModel/>

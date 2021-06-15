@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="400"
 			 xmlns:c="clr-namespace:RoundButton.Controls;assembly=RoundButton"
-             x:Class="RoundButton.ViewModels.TestUserControl">
+             x:Class="RoundButton.Views.TestUserControl">
 	<StackPanel Orientation="Horizontal">
 		<Button
 		Classes="TestBtn"

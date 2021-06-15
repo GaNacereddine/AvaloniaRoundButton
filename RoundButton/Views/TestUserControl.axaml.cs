@@ -2,7 +2,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace RoundButton.ViewModels
+namespace RoundButton.Views
 {
     public partial class TestUserControl : UserControl
     {
