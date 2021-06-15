@@ -121,12 +121,12 @@
 		<Setter Property="Opacity" Value="0.4"/>
 	</Style>
 
-	<Style Selector="c|CircularActionButton:pointerover">
-		<Setter Property="Foreground" Value="Black"/>
+	<Style Selector="c|CircularActionButton[IsLoading=False]:pressed">
+		<Setter Property="RenderTransform" Value="scale(0.98)" />
 	</Style>
 
-	<Style Selector="c|CircularActionButton:pressed">
-		<Setter Property="RenderTransform" Value="scale(0.98)" />
+	<Style Selector="c|CircularActionButton:pointerover">
+		<Setter Property="Background" Value="Black"/>
 	</Style>
 
 	<!-- path rotating -->

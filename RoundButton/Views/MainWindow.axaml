@@ -7,40 +7,61 @@
         x:Class="RoundButton.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="RoundButton"
-		xmlns:c="clr-namespace:RoundButton.Controls;assembly=RoundButton">
+		xmlns:c="clr-namespace:RoundButton.Controls;assembly=RoundButton"
+		xmlns:uc="clr-namespace:RoundButton.ViewModels;assembly=RoundButton">
 
     <Design.DataContext>
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
 	<StackPanel HorizontalAlignment="Center">
-		<Button
+		<StackPanel Orientation="Horizontal">
+			<Button
 			Classes="TestBtn"
 			VerticalAlignment="Center"
 			HorizontalAlignment="Left"
 			Height="40"
 			Width="40">
-		</Button>
+			</Button>
 
-		<c:CircularActionButton
-						Height="40"
-						Width="40"
-						Margin="7"
-						PathData="{DynamicResource ExitBtnGeometry}"
-						HorizontalAlignment="Left"
-						ToolTip.Tip="Close">
-		</c:CircularActionButton>
-		
-		<c:CircularActionButton
-							Height="40"
-							Width="40"
-							Margin="7"
-							IsLoading="True"
-							PathData="{DynamicResource ExitBtnGeometry}"
-							HorizontalAlignment="Left"
-							ToolTip.Tip="Close"
-							Command="{Binding ExitCommand}">
+			<c:CircularActionButton
+					Height="40"
+					Width="40"
+					Margin="7"
+					PathData="{DynamicResource ExitBtnGeometry}"
+					Background="{DynamicResource BtnHotRedFill}"
+					Foreground="White"
+					LoadingBackground="{DynamicResource BtnHotRedFill}"
+					LoadingForeground="White"
+					HorizontalAlignment="Left"
+					ToolTip.Tip="Close">
 			</c:CircularActionButton>
+
+			<c:CircularActionButton
+					Height="40"
+					Width="40"
+					Margin="7"
+					IsLoading="True"
+					PathData="{DynamicResource ExitBtnGeometry}"
+					Background="{DynamicResource BtnHotRedFill}"
+					Foreground="White"
+					LoadingBackground="{DynamicResource BtnHotRedFill}"
+					LoadingForeground="White"
+					HorizontalAlignment="Left"
+					ToolTip.Tip="Close">
+			</c:CircularActionButton>
+
+		</StackPanel>
+
+		<TextBlock>In User Control:</TextBlock>
+
+		<Border BorderThickness="1" BorderBrush="Black">
+			<ContentControl>
+				<uc:TestUserControl/>
+			</ContentControl>
+		</Border>
+		
+		
 		
 	</StackPanel>
 

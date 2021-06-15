@@ -5,33 +5,40 @@
              mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="400"
 			 xmlns:c="clr-namespace:RoundButton.Controls;assembly=RoundButton"
              x:Class="RoundButton.ViewModels.TestUserControl">
-	<StackPanel HorizontalAlignment="Center">
+	<StackPanel Orientation="Horizontal">
 		<Button
-			Classes="TestBtn"
-			VerticalAlignment="Center"
-			HorizontalAlignment="Left"
-			Height="40"
-			Width="40">
+		Classes="TestBtn"
+		VerticalAlignment="Center"
+		HorizontalAlignment="Left"
+		Height="40"
+		Width="40">
 		</Button>
 
 		<c:CircularActionButton
-						Height="40"
-						Width="40"
-						Margin="7"
-						PathData="{DynamicResource ExitBtnGeometry}"
-						HorizontalAlignment="Left"
-						ToolTip.Tip="Close">
+				Height="40"
+				Width="40"
+				Margin="7"
+				PathData="{DynamicResource ExitBtnGeometry}"
+				Background="{DynamicResource BtnHotRedFill}"
+				Foreground="White"
+				LoadingBackground="{DynamicResource BtnHotRedFill}"
+				LoadingForeground="White"
+				HorizontalAlignment="Left"
+				ToolTip.Tip="Close">
 		</c:CircularActionButton>
 
 		<c:CircularActionButton
-							Height="40"
-							Width="40"
-							Margin="7"
-							IsLoading="True"
-							PathData="{DynamicResource ExitBtnGeometry}"
-							HorizontalAlignment="Left"
-							ToolTip.Tip="Close"
-							Command="{Binding ExitCommand}">
+				Height="40"
+				Width="40"
+				Margin="7"
+				IsLoading="True"
+				PathData="{DynamicResource ExitBtnGeometry}"
+				Background="{DynamicResource BtnHotRedFill}"
+				Foreground="White"
+				LoadingBackground="{DynamicResource BtnHotRedFill}"
+				LoadingForeground="White"
+				HorizontalAlignment="Left"
+				ToolTip.Tip="Close">
 		</c:CircularActionButton>
 
 	</StackPanel>
