@@ -22,20 +22,39 @@
 							ToolTip.Tip="Close"
 							Command="{Binding ExitCommand}">
 			</c:CircularActionButton>
+
+			<c:CircularActionButton
+							Height="40"
+							Width="40"
+							Margin="7"
+							IsLoading="True"
+							PathData="{DynamicResource ExitBtnGeometry}"
+							HorizontalAlignment="Left"
+							ToolTip.Tip="Close"
+							Command="{Binding ExitCommand}">
+			</c:CircularActionButton>
+
 		</StackPanel>
 	</Design.PreviewWith>
 
 	<Styles.Resources>
 		<StreamGeometry x:Key="ExitBtnGeometry">m 10.009327,17.49951 c 1.533427,0 2.959353,-0.460125 4.147229,-1.250001 h 3.659502 c -1.832626,2.286127 -4.648753,3.750003 -7.806731,3.750003 -5.5228535,0 -10.00000769,-4.477129 -10.00000769,-9.9999951 0,-5.5228541 4.47715419,-10.000005181 10.00000769,-10.000005181 3.157978,0 5.974105,1.463848881 7.806731,3.750000581 H 14.156556 C 12.96868,2.9596992 11.542754,2.4995114 10.009327,2.4995114 c -4.14214,0 -7.500005,3.357865 -7.500005,7.5000055 0,4.1421151 3.357865,7.4999931 7.500005,7.4999931 z m 5.58698,-11.9128338 -1.325751,1.3258259 2.149501,2.1495141 H 8.6834515 v 1.8750018 h 7.7367305 l -2.149626,2.149614 1.325751,1.325876 4.413003,-4.4129161 z</StreamGeometry>
+		<StreamGeometry x:Key="LoadingGeometry">M 17.128565,0 C 16.734062,0 16.414291,0.31977111 16.414291,0.71427402 V 3.3235241 C 12.736867,-0.23675381 6.8695452,-0.14173329 3.3092672,3.5356483 1.6313952,5.2687241 0.69537121,7.5877815 0.70001721,9.9999998 c 0,0.3945032 0.31985299,0.7142742 0.71435599,0.7142742 0.394503,0 0.714192,-0.319771 0.714192,-0.7142742 8.79e-4,-4.3393647 3.519324,-7.8565035 7.858731,-7.8556246 2.2038338,4.185e-4 4.3061088,0.9264316 5.7941368,2.5520297 l -3.164206,1.0549805 c -0.374748,0.124679 -0.577537,0.5294974 -0.452858,0.9042458 0.124679,0.3747485 0.529497,0.5775375 0.904245,0.4528585 l 4.285726,-1.428548 c 0.29255,-0.097433 0.489543,-0.3716132 0.488581,-0.6799416 V 0.71427402 C 17.842879,0.31981297 17.523068,0 17.128565,0 Z m 1.428548,9.285726 c -0.394503,0 -0.714274,0.3197709 -0.714274,0.7142738 -8.79e-4,4.3393642 -3.519324,7.8565042 -7.8587308,7.8556252 -2.203834,-4.19e-4 -4.306109,-0.926432 -5.794137,-2.55203 l 3.164287,-1.05498 c 0.374749,-0.124679 0.577538,-0.529498 0.452859,-0.904246 -0.124679,-0.374749 -0.529579,-0.577538 -0.904327,-0.452859 l -4.285726,1.428548 C 2.3245142,14.417491 2.1275212,14.691672 2.1284832,15 v 4.285726 c 0,0.394503 0.319853,0.714274 0.714356,0.714274 0.394503,0 0.714274,-0.319771 0.714274,-0.714274 v -2.609332 c 3.677424,3.560278 9.5447058,3.465381 13.1049418,-0.212042 1.677872,-1.733076 2.613978,-4.052134 2.609332,-6.4643522 8.4e-5,-0.3945029 -0.319771,-0.7142738 -0.714274,-0.7142738 z</StreamGeometry>
+		
+		<SolidColorBrush x:Key="LatralControlFill" Color="White" />
+		<SolidColorBrush x:Key="BtnDefaultFill" Color="#8898AF"/>
+		<SolidColorBrush x:Key="BtnHoverFill" Color="#0A62CB"/>
+		<SolidColorBrush x:Key="BtnHotRedFill" Color="#E2252E"/>
+	
 	</Styles.Resources>
 	
 	<!-- Circular action button -->
-	
+
 	<Style Selector="c|CircularActionButton">
-		<Setter Property="Background" Value="Red"/>
-		<Setter Property="Foreground" Value="White"/>
-		<Setter Property="LoadingBackground" Value="Red"/>
-		<Setter Property="LoadingForeground" Value="White"/>
+		<Setter Property="Background" Value="{DynamicResource BtnDefaultFill}"/>
+		<Setter Property="Foreground" Value="{DynamicResource LatralControlFill}"/>
+		<Setter Property="LoadingBackground" Value="{DynamicResource BtnDefaultFill}"/>
+		<Setter Property="LoadingForeground" Value="{DynamicResource LatralControlFill}"/>
 		<Setter Property="BorderBrush" Value="Transparent"/>
 		<Setter Property="BorderThickness" Value="0"/>
 		<Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -47,23 +66,82 @@
 		<Setter Property="Margin" Value="5"/>
 		<Setter Property="Template">
 			<ControlTemplate>
-				<Border Name="PART_Normal"
+				<Grid RowDefinitions="auto">
+					<Border Name="PART_Normal"
+						Grid.Row="0"
+						Height="{Binding Height, RelativeSource={RelativeSource TemplatedParent}}"
+						Width="{Binding Width, RelativeSource={RelativeSource TemplatedParent}}"
+						Background="{Binding Background, RelativeSource={RelativeSource TemplatedParent}}"
+						CornerRadius="{Binding CalculatedRadius, RelativeSource={RelativeSource TemplatedParent}}">
+						<Path
+							HorizontalAlignment="Center"
+							VerticalAlignment="Center"
+							Data="{Binding PathData, RelativeSource={RelativeSource TemplatedParent}}"
+							Fill="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}"/>
+					</Border>
+					<Border    Name="PART_IsLoading"
+						Grid.Row="0"
 						Height="{Binding Height, RelativeSource={RelativeSource TemplatedParent}}"
 						Width="{Binding Width, RelativeSource={RelativeSource TemplatedParent}}"
 						Background="{Binding LoadingBackground, RelativeSource={RelativeSource TemplatedParent}}"
 						CornerRadius="{Binding CalculatedRadius, RelativeSource={RelativeSource TemplatedParent}}">
-					<Path
-						HorizontalAlignment="Center"
-						VerticalAlignment="Center"
-						Data="{Binding PathData, RelativeSource={RelativeSource TemplatedParent}}"
-						Fill="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}"/>
-				</Border>
+						<Path Classes="PathRotating"
+							Fill="{Binding LoadingForeground, RelativeSource={RelativeSource TemplatedParent}}"
+							HorizontalAlignment="Center"
+							VerticalAlignment="Center"
+							Data="{DynamicResource LoadingGeometry}">
+						</Path>
+					</Border>
+				</Grid>
 			</ControlTemplate>
 		</Setter>
 	</Style>
 
+	<Style Selector="c|CircularActionButton[IsLoading=False] /template/ Border#PART_Normal">
+		<Setter Property="IsVisible" Value="True"/>
+	</Style>
+
+	<Style Selector="c|CircularActionButton[IsLoading=True] /template/ Border#PART_Normal">
+		<Setter Property="IsVisible" Value="False"/>
+	</Style>
+
+	<Style Selector="c|CircularActionButton[IsLoading=False] /template/ Border#PART_IsLoading">
+		<Setter Property="IsVisible" Value="False"/>
+	</Style>
+
+	<Style Selector="c|CircularActionButton[IsLoading=True] /template/ Border#PART_IsLoading">
+		<Setter Property="IsVisible" Value="True"/>
+	</Style>
+
+	<Style Selector="c|CircularActionButton[IsEnabled=True]">
+		<Setter Property="Opacity" Value="1"/>
+	</Style>
+
+	<Style Selector="c|CircularActionButton[IsEnabled=False]">
+		<Setter Property="Opacity" Value="0.4"/>
+	</Style>
+
 	<Style Selector="c|CircularActionButton:pointerover">
-		<Setter Property="LoadingBackground" Value="Black"/>
+		<Setter Property="Foreground" Value="Black"/>
+	</Style>
+
+	<Style Selector="c|CircularActionButton:pressed">
+		<Setter Property="RenderTransform" Value="scale(0.98)" />
+	</Style>
+
+	<!-- path rotating -->
+
+	<Style Selector="Path.PathRotating">
+		<Style.Animations>
+			<Animation Duration="0:0:1" IterationCount="INFINITE">
+				<KeyFrame Cue="0%">
+					<Setter Property="RotateTransform.Angle" Value="0"/>
+				</KeyFrame>
+				<KeyFrame Cue="100%">
+					<Setter Property="RotateTransform.Angle" Value="360"/>
+				</KeyFrame>
+			</Animation>
+		</Style.Animations>
 	</Style>
 
 	<!-- test button -->

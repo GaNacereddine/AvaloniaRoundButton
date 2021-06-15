@@ -30,6 +30,18 @@
 						HorizontalAlignment="Left"
 						ToolTip.Tip="Close">
 		</c:CircularActionButton>
+		
+		<c:CircularActionButton
+							Height="40"
+							Width="40"
+							Margin="7"
+							IsLoading="True"
+							PathData="{DynamicResource ExitBtnGeometry}"
+							HorizontalAlignment="Left"
+							ToolTip.Tip="Close"
+							Command="{Binding ExitCommand}">
+			</c:CircularActionButton>
+		
 	</StackPanel>
 
 </Window>
