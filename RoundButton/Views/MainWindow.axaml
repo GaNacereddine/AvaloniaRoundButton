@@ -27,13 +27,8 @@
 						Width="40"
 						Margin="7"
 						PathData="{DynamicResource ExitBtnGeometry}"
-						Background="{DynamicResource BtnHotRedFill}"
-						Foreground="White"
-						LoadingBackground="{DynamicResource BtnHotRedFill}"
-						LoadingForeground="White"
 						HorizontalAlignment="Left"
-						ToolTip.Tip="Close"
-						Command="{Binding ExitCommand}">
+						ToolTip.Tip="Close">
 		</c:CircularActionButton>
 	</StackPanel>
 
