@@ -125,6 +125,10 @@
 		<Setter Property="NormalForeground" Value="Black"/>
 	</Style>
 
+	<Style Selector="c|CircularActionButton:not(:pointerover)">
+		<Setter Property="NormalForeground" Value="White"/>
+	</Style>
+
 	<Style Selector="c|CircularActionButton[IsLoading=False]:pressed">
 		<Setter Property="RenderTransform" Value="scale(0.98)" />
 	</Style>

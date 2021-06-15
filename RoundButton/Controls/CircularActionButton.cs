@@ -8,10 +8,6 @@ namespace RoundButton.Controls
     public class CircularActionButton : Button
     {
         public static readonly StyledProperty<Geometry> PathDataProperty = AvaloniaProperty.Register<CircularActionButton, Geometry>(nameof(PathData));
-        public static readonly StyledProperty<SolidColorBrush> NormalBackgroundProperty = AvaloniaProperty.Register<CircularActionButton, SolidColorBrush>(nameof(NormalBackground));
-        public static readonly StyledProperty<SolidColorBrush> NormalForegroundProperty = AvaloniaProperty.Register<CircularActionButton, SolidColorBrush>(nameof(NormalForeground));
-        public static readonly StyledProperty<SolidColorBrush> LoadingBackgroundProperty = AvaloniaProperty.Register<CircularActionButton, SolidColorBrush>(nameof(LoadingBackground));
-        public static readonly StyledProperty<SolidColorBrush> LoadingForegroundProperty = AvaloniaProperty.Register<CircularActionButton, SolidColorBrush>(nameof(LoadingForeground));
 
         public static readonly StyledProperty<CornerRadius> CalculatedRadiusProperty = AvaloniaProperty.Register<CircularActionButton, CornerRadius>(nameof(CalculatedRadius));
 
@@ -22,7 +18,39 @@ namespace RoundButton.Controls
                 (o, v) => o.IsLoading = v,
                 unsetValue: false,
                 defaultBindingMode: BindingMode.TwoWay);
-
+        
+        public static readonly DirectProperty<CircularActionButton, SolidColorBrush> NormalBackgroundProperty =
+            AvaloniaProperty.RegisterDirect<CircularActionButton, SolidColorBrush>(
+                nameof(NormalBackground),
+                o => o.NormalBackground,
+                (o, v) => o.NormalBackground = v,
+                unsetValue: new SolidColorBrush(Colors.Black),
+                defaultBindingMode: BindingMode.TwoWay);
+ 
+        public static readonly DirectProperty<CircularActionButton, SolidColorBrush> NormalForegroundProperty =
+            AvaloniaProperty.RegisterDirect<CircularActionButton, SolidColorBrush>(
+                nameof(NormalForeground),
+                o => o.NormalForeground,
+                (o, v) => o.NormalForeground = v,
+                unsetValue: new SolidColorBrush(Colors.Black),
+                defaultBindingMode: BindingMode.TwoWay);
+ 
+        public static readonly DirectProperty<CircularActionButton, SolidColorBrush> LoadingBackgroundProperty =
+            AvaloniaProperty.RegisterDirect<CircularActionButton, SolidColorBrush>(
+                nameof(LoadingBackground),
+                o => o.LoadingBackground,
+                (o, v) => o.LoadingBackground = v,
+                unsetValue: new SolidColorBrush(Colors.Black),
+                defaultBindingMode: BindingMode.TwoWay);
+ 
+        public static readonly DirectProperty<CircularActionButton, SolidColorBrush> LoadingForegroundProperty =
+            AvaloniaProperty.RegisterDirect<CircularActionButton, SolidColorBrush>(
+                nameof(LoadingForeground),
+                o => o.LoadingForeground,
+                (o, v) => o.LoadingForeground = v,
+                unsetValue: new SolidColorBrush(Colors.Black),
+                defaultBindingMode: BindingMode.TwoWay);
+ 
         public CircularActionButton()
         {
             CalculatedRadius = new CornerRadius(20);
@@ -55,28 +83,32 @@ namespace RoundButton.Controls
             set => SetValue(PathDataProperty, value);
         }
 
-        public SolidColorBrush NormalBackground
-        {
-            get => GetValue(NormalBackgroundProperty);
-            set => SetValue(NormalBackgroundProperty, value);
-        }
-
-        public SolidColorBrush NormalForeground
-        {
-            get => GetValue(NormalForegroundProperty);
-            set => SetValue(NormalForegroundProperty, value);
-        }
-
+        private SolidColorBrush _loadingBackground;
         public SolidColorBrush LoadingBackground
         {
-            get => GetValue(LoadingBackgroundProperty);
-            set => SetValue(LoadingBackgroundProperty, value);
+            get => _loadingBackground;
+            set => SetAndRaise(LoadingBackgroundProperty, ref _loadingBackground, value);
         }
 
+        private SolidColorBrush _loadingForeground;
         public SolidColorBrush LoadingForeground
         {
-            get => GetValue(LoadingForegroundProperty);
-            set => SetValue(LoadingForegroundProperty, value);
+            get => _loadingForeground;
+            set => SetAndRaise(LoadingForegroundProperty, ref _loadingForeground, value);
+        }
+
+        private SolidColorBrush _normalBackground;
+        public SolidColorBrush NormalBackground
+        {
+            get => _normalBackground;
+            set => SetAndRaise(NormalBackgroundProperty, ref _normalBackground, value);
+        }
+
+        private SolidColorBrush _normalForeground;
+        public SolidColorBrush NormalForeground
+        {
+            get => _normalForeground;
+            set => SetAndRaise(NormalForegroundProperty, ref _normalForeground, value);
         }
 
         private void SetCalculatedRadius(CornerRadius value)
