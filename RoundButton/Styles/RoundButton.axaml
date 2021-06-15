@@ -1,0 +1,109 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+       xmlns:c="clr-namespace:RoundButton.Controls;assembly=RoundButton">
+
+	<Design.PreviewWith>
+		<StackPanel>
+
+			<Button
+				Classes="TestBtn"
+				VerticalAlignment="Center"
+				HorizontalAlignment="Left"
+				Height="40"
+				Width="40">
+			</Button>
+			
+			<c:CircularActionButton
+							Height="40"
+							Width="40"
+							Margin="7"
+							PathData="{DynamicResource ExitBtnGeometry}"
+							Background="{DynamicResource BtnHotRedFill}"
+							Foreground="White"
+							LoadingBackground="{DynamicResource BtnHotRedFill}"
+							LoadingForeground="White"
+							HorizontalAlignment="Left"
+							ToolTip.Tip="Close"
+							Command="{Binding ExitCommand}">
+			</c:CircularActionButton>
+		</StackPanel>
+	</Design.PreviewWith>
+
+	<Styles.Resources>
+		<StreamGeometry x:Key="ExitBtnGeometry">m 10.009327,17.49951 c 1.533427,0 2.959353,-0.460125 4.147229,-1.250001 h 3.659502 c -1.832626,2.286127 -4.648753,3.750003 -7.806731,3.750003 -5.5228535,0 -10.00000769,-4.477129 -10.00000769,-9.9999951 0,-5.5228541 4.47715419,-10.000005181 10.00000769,-10.000005181 3.157978,0 5.974105,1.463848881 7.806731,3.750000581 H 14.156556 C 12.96868,2.9596992 11.542754,2.4995114 10.009327,2.4995114 c -4.14214,0 -7.500005,3.357865 -7.500005,7.5000055 0,4.1421151 3.357865,7.4999931 7.500005,7.4999931 z m 5.58698,-11.9128338 -1.325751,1.3258259 2.149501,2.1495141 H 8.6834515 v 1.8750018 h 7.7367305 l -2.149626,2.149614 1.325751,1.325876 4.413003,-4.4129161 z</StreamGeometry>
+	</Styles.Resources>
+	
+	<!-- Circular action button -->
+	
+	<Style Selector="c|CircularActionButton">
+		<Setter Property="Background" Value="Red"/>
+		<Setter Property="Foreground" Value="White"/>
+		<Setter Property="LoadingBackground" Value="Red"/>
+		<Setter Property="LoadingForeground" Value="White"/>
+		<Setter Property="BorderBrush" Value="Transparent"/>
+		<Setter Property="BorderThickness" Value="0"/>
+		<Setter Property="HorizontalContentAlignment" Value="Center"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
+		<Setter Property="HorizontalAlignment" Value="Center"/>
+		<Setter Property="VerticalAlignment" Value="Center"/>
+		<Setter Property="Height" Value="40"/>
+		<Setter Property="Width" Value="40"/>
+		<Setter Property="Margin" Value="5"/>
+		<Setter Property="Template">
+			<ControlTemplate>
+				<Border Name="PART_Normal"
+						Height="{Binding Height, RelativeSource={RelativeSource TemplatedParent}}"
+						Width="{Binding Width, RelativeSource={RelativeSource TemplatedParent}}"
+						Background="{Binding LoadingBackground, RelativeSource={RelativeSource TemplatedParent}}"
+						CornerRadius="{Binding CalculatedRadius, RelativeSource={RelativeSource TemplatedParent}}">
+					<Path
+						HorizontalAlignment="Center"
+						VerticalAlignment="Center"
+						Data="{Binding PathData, RelativeSource={RelativeSource TemplatedParent}}"
+						Fill="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}"/>
+				</Border>
+			</ControlTemplate>
+		</Setter>
+	</Style>
+
+	<Style Selector="c|CircularActionButton:pointerover">
+		<Setter Property="LoadingBackground" Value="Black"/>
+	</Style>
+
+	<!-- test button -->
+	
+	<Style Selector="Button.TestBtn">
+		<Setter Property="Background" Value="Red"/>
+		<Setter Property="Foreground" Value="White"/>
+		<Setter Property="BorderBrush" Value="Transparent"/>
+		<Setter Property="BorderThickness" Value="0"/>
+		<Setter Property="HorizontalContentAlignment" Value="Center"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
+		<Setter Property="HorizontalAlignment" Value="Center"/>
+		<Setter Property="VerticalAlignment" Value="Center"/>
+		<Setter Property="Height" Value="40"/>
+		<Setter Property="Width" Value="40"/>
+		<Setter Property="Margin" Value="5"/>
+		<Setter Property="Template">
+			<ControlTemplate>
+				<Border Name="PART_Normal"
+						Grid.Row="0"
+						Height="{Binding Height, RelativeSource={RelativeSource TemplatedParent}}"
+						Width="{Binding Width, RelativeSource={RelativeSource TemplatedParent}}"
+						Background="{Binding Background, RelativeSource={RelativeSource TemplatedParent}}"
+						CornerRadius="20">
+					<Path
+						HorizontalAlignment="Center"
+						VerticalAlignment="Center"
+						Data="{DynamicResource ExitBtnGeometry}"
+						Fill="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}"/>
+				</Border>
+			</ControlTemplate>
+		</Setter>
+	</Style>
+
+	<Style Selector="Button.TestBtn:pointerover">
+		<Setter Property="Background" Value="Black"/>
+	</Style>
+
+</Styles>
