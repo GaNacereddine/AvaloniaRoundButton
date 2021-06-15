@@ -29,10 +29,6 @@
 					Width="40"
 					Margin="7"
 					PathData="{DynamicResource ExitBtnGeometry}"
-					Background="{DynamicResource BtnHotRedFill}"
-					Foreground="White"
-					LoadingBackground="{DynamicResource BtnHotRedFill}"
-					LoadingForeground="White"
 					HorizontalAlignment="Left"
 					ToolTip.Tip="Close">
 			</c:CircularActionButton>
@@ -43,10 +39,6 @@
 					Margin="7"
 					IsLoading="True"
 					PathData="{DynamicResource ExitBtnGeometry}"
-					Background="{DynamicResource BtnHotRedFill}"
-					Foreground="White"
-					LoadingBackground="{DynamicResource BtnHotRedFill}"
-					LoadingForeground="White"
 					HorizontalAlignment="Left"
 					ToolTip.Tip="Close">
 			</c:CircularActionButton>
