@@ -47,12 +47,12 @@
 		<SolidColorBrush x:Key="BtnHotRedFill" Color="#E2252E"/>
 	
 	</Styles.Resources>
-	
+
 	<!-- Circular action button -->
 
 	<Style Selector="c|CircularActionButton">
-		<Setter Property="Background" Value="{DynamicResource BtnDefaultFill}"/>
-		<Setter Property="Foreground" Value="{DynamicResource LatralControlFill}"/>
+		<Setter Property="NormalBackground" Value="{DynamicResource BtnDefaultFill}"/>
+		<Setter Property="NormalForeground" Value="{DynamicResource LatralControlFill}"/>
 		<Setter Property="LoadingBackground" Value="{DynamicResource BtnDefaultFill}"/>
 		<Setter Property="LoadingForeground" Value="{DynamicResource LatralControlFill}"/>
 		<Setter Property="BorderBrush" Value="Transparent"/>
@@ -71,13 +71,13 @@
 						Grid.Row="0"
 						Height="{Binding Height, RelativeSource={RelativeSource TemplatedParent}}"
 						Width="{Binding Width, RelativeSource={RelativeSource TemplatedParent}}"
-						Background="{Binding Background, RelativeSource={RelativeSource TemplatedParent}}"
+						Background="{TemplateBinding NormalBackground}"
 						CornerRadius="{Binding CalculatedRadius, RelativeSource={RelativeSource TemplatedParent}}">
 						<Path
 							HorizontalAlignment="Center"
 							VerticalAlignment="Center"
 							Data="{Binding PathData, RelativeSource={RelativeSource TemplatedParent}}"
-							Fill="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}"/>
+							Fill="{TemplateBinding NormalForeground}"/>
 					</Border>
 					<Border    Name="PART_IsLoading"
 						Grid.Row="0"
@@ -121,12 +121,12 @@
 		<Setter Property="Opacity" Value="0.4"/>
 	</Style>
 
-	<Style Selector="c|CircularActionButton[IsLoading=False]:pressed">
-		<Setter Property="RenderTransform" Value="scale(0.98)" />
+	<Style Selector="c|CircularActionButton:pointerover">
+		<Setter Property="NormalForeground" Value="Black"/>
 	</Style>
 
-	<Style Selector="c|CircularActionButton:pointerover">
-		<Setter Property="Background" Value="Black"/>
+	<Style Selector="c|CircularActionButton[IsLoading=False]:pressed">
+		<Setter Property="RenderTransform" Value="scale(0.98)" />
 	</Style>
 
 	<!-- path rotating -->

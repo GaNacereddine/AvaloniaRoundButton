@@ -28,6 +28,7 @@
 					Height="40"
 					Width="40"
 					Margin="7"
+					NormalBackground="Blue"
 					PathData="{DynamicResource ExitBtnGeometry}"
 					HorizontalAlignment="Left"
 					ToolTip.Tip="Close">

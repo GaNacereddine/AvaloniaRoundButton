@@ -8,6 +8,8 @@ namespace RoundButton.Controls
     public class CircularActionButton : Button
     {
         public static readonly StyledProperty<Geometry> PathDataProperty = AvaloniaProperty.Register<CircularActionButton, Geometry>(nameof(PathData));
+        public static readonly StyledProperty<SolidColorBrush> NormalBackgroundProperty = AvaloniaProperty.Register<CircularActionButton, SolidColorBrush>(nameof(NormalBackground));
+        public static readonly StyledProperty<SolidColorBrush> NormalForegroundProperty = AvaloniaProperty.Register<CircularActionButton, SolidColorBrush>(nameof(NormalForeground));
         public static readonly StyledProperty<SolidColorBrush> LoadingBackgroundProperty = AvaloniaProperty.Register<CircularActionButton, SolidColorBrush>(nameof(LoadingBackground));
         public static readonly StyledProperty<SolidColorBrush> LoadingForegroundProperty = AvaloniaProperty.Register<CircularActionButton, SolidColorBrush>(nameof(LoadingForeground));
 
@@ -20,14 +22,6 @@ namespace RoundButton.Controls
                 (o, v) => o.IsLoading = v,
                 unsetValue: false,
                 defaultBindingMode: BindingMode.TwoWay);
-        static CircularActionButton()
-        {
-            AffectsRender<CircularActionButton>(PathDataProperty,
-                                                BackgroundProperty,
-                                                ForegroundProperty,
-                                                LoadingBackgroundProperty,
-                                                LoadingForegroundProperty);
-        }
 
         public CircularActionButton()
         {
@@ -59,6 +53,18 @@ namespace RoundButton.Controls
         {
             get => GetValue(PathDataProperty);
             set => SetValue(PathDataProperty, value);
+        }
+
+        public SolidColorBrush NormalBackground
+        {
+            get => GetValue(NormalBackgroundProperty);
+            set => SetValue(NormalBackgroundProperty, value);
+        }
+
+        public SolidColorBrush NormalForeground
+        {
+            get => GetValue(NormalForegroundProperty);
+            set => SetValue(NormalForegroundProperty, value);
         }
 
         public SolidColorBrush LoadingBackground
